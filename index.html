@@ -103,15 +103,10 @@
 		line-height: 1.5;
 	}
 	p {margin: 0 0 1rem}
-
-	#u {
-		color: #ff4500;
-	}
 	span:not(#u) {
 		font-size: .8rem;
 		color: #888;
 	}
-
 	section {
 		position:relative;
 		min-height: 100vh;
@@ -122,6 +117,7 @@
 		position: fixed;
 		left:10vw;
 	}
+	#u {color: #ff4500;}
 	h3 {
 		font-size: 1rem;
 		margin: 4rem 0 0;
@@ -129,8 +125,7 @@
 	h3:first-of-type {
 		margin: 0;
 	}
-	h2, .col-r
-	 {
+	h2, .col-r {
 		position:absolute;
 		left:50vw;
 		width:35vw;
@@ -154,4 +149,33 @@
 	}
 </style>
 
+<script>
+	(function resize() {
+		$('section').each(function (){
+			let h = $(this).find('.col-r').height();
+			let hh = `calc(${h}px + 35vh)`;
+			$(this).css('height', hh);
+		})
+	})();
+
+	let waitForFinalEvent = (function () {
+		let timers = {};
+		return function (callback, ms, uniqueId) {
+			if (!uniqueId) {
+				uniqueId = "Don't call this twice without a uniqueId";
+			}
+			if (timers[uniqueId]) {
+				clearTimeout (timers[uniqueId]);
+			}
+			timers[uniqueId] = setTimeout(callback, ms);
+		};
+	})();
+
+	$(window).resize(function () {
+		waitForFinalEvent(function(){
+			resize();
+		}, 500, "some unique string");
+	});
+
+</script>
 </html>
