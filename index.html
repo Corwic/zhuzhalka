@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<h1>zh<span id="u">u</span>zhalka<span id="zhucyr">жу́жалка</span></h1>
+<h1><span id="zhucyr">жу́жалка</span><br><span id="zhulat">zh<span id="u">u</span>zhalka</span></h1>
 
 
 <section>
@@ -123,32 +123,42 @@
 			". add main ."
 	}
 
-	h1, h2 {font-size: 2rem}
-	h1{
+	h1 {
 		position: fixed;
 		left: 10vw;
-		height: calc(50px + 1.5rem);
+		top: 26px;
+		height: calc(50px);
 		margin: 0;
-		display: grid;
-		grid-template-columns: repeat(3, min-content);
-		align-content: end;
+		display: flex;
+		flex-flow: column wrap;
+		align-self: bottom;
 	}
 	#u {
 		color: #f44;
 	}
 	#zhucyr {
+		flex-grow: 1;
+		font-size: 2rem;
+	}
+	#zhulat {
+		align-self: end;
 		font-size: 1rem;
-		grid-column: span 3;
-		padding-left: .4rem;
+		text-transform: uppercase;
+		font-weight: 900;
+		transform: translateY(-3px);
+	}
+	h2 {
+		font-size: 2rem;
+		grid-area: title
 	}
 	h3 {
 		font-size: 1rem;
-		margin: 4rem 0 0;
+		margin: 4rem 0 1.5rem;
 	}
 	h3:first-of-type {
-		margin: 0;
+		margin-top: 0;
 	}
-	h2 {grid-area: title;}
+
 
 
 	.col-r, .col-l, .col-l-add {
